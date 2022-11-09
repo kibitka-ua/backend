@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: kibitka_be
+  profiles:
+    active: ${PROFILE:local}
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  datasource:
+    url: jdbc:mysql://${DB_HOST:0.0.0.0}:${DB_PORT:3306}/kibitka-be?createDatabaseIfNotExist=true
+    username: root
+    password: pass
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+    hibernate:
+      ddl-auto: update
