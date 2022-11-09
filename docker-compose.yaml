@@ -1,0 +1,28 @@
+version: '2.4'
+services:
+  db:
+    image: mysql
+    container_name: mysql
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+    volumes:
+      - kibitka_db:/var/lib/mysql
+
+  portainer:
+    image: portainer/portainer
+    container_name: portainer
+    ports:
+      - 9000:9000
+    volumes:
+      - portainer_data:/data_portainer/portainer
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: always
+
+volumes:
+  kibitka_db:
+    external: true
+  portainer_data:
+    external: true
